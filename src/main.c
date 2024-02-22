@@ -84,7 +84,10 @@ int	main(int argc, char **argv)
 		return (ft_printf(ERROR_MSG_OPEN));
 	set_mapsize(&gameimg, gameimg.map);
 	if (!check_map(&gameimg, 0, 0, 0))
+	{
+		free_map(gameimg.map);
 		return (ft_printf(ERROR_MSG_MAP));
+	}
 	if (valid_path(&gameimg, argv[1]) == FALSE)
 		return (free_map(gameimg.map), 1);
 	if (init_game(&gameimg) == FALSE)

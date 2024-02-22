@@ -72,11 +72,43 @@ int	*start_position(char **map)
 	return (pos);
 }
 
+int	boundary_check(char **map)
+{
+	int	i;
+	int	j;
+	int	len;
+
+	i = -1;
+	len = 0;
+	while (map[len])
+		len++;
+	while (map[++i])
+	{
+		j = 0;
+		if (i == 0 && map[i][0] != MAP_WALL)
+			return (1);
+		while (map[i][j])
+		{
+			if ((i == 0 || i == len - 1) && map[i][j] != MAP_WALL)
+				return (1);
+			j++;
+		}
+		if (map[i][j - 1] != MAP_WALL)
+			return (1);
+	}
+	return (0);
+}
+
 int	valid_path(t_gameimg *gameImg, char *map)
 {
 	int	*pos;
 
 	gameImg->tmp = read_map(map);
+	if (boundary_check(gameImg->tmp))
+	{
+		free_map(gameImg->tmp);
+		return (ft_printf(ERROR_MSG_MAP), FALSE);
+	}
 	pos = start_position(gameImg->tmp);
 	flood_map(gameImg, pos[0], pos[1]);
 	if (check_flood(gameImg->tmp) == FALSE)
