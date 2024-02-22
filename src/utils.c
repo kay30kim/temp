@@ -30,7 +30,7 @@ int	map_simplecheck(char *buf)
 	int	i;
 
 	i = 1;
-	while (buf[i])
+	while (buf && buf[i])
 	{
 		if (buf[i -1] == '\n' && buf[i] == '\n')
 			return (1);
