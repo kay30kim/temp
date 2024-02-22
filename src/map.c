@@ -50,7 +50,7 @@ char	**read_map(char *script_map)
 		buf = ft_strjoin2(buf, tmp);
 	}
 	if (map_simplecheck(buf))
-		return (NULL);
+		return (free_return(buf, tmp, fd));
 	map = ft_split(buf, '\n');
 	free(tmp);
 	free(buf);

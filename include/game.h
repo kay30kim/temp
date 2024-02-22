@@ -105,5 +105,6 @@ int		check_map(t_gameimg *game_img, int cnt_entry,
 			int cnt_exit, int cnt_col);
 int		check(t_gameimg *game_img, int i, int j);
 int		map_simplecheck(char *buf);
+char	**free_return(char *buf, char *tmp, int fd);
 
 #endif

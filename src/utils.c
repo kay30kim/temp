@@ -38,3 +38,11 @@ int	map_simplecheck(char *buf)
 	}
 	return (0);
 }
+
+char	**free_return(char *buf, char *tmp, int fd)
+{
+	free(buf);
+	free(tmp);
+	close(fd);
+	return (NULL);
+}
